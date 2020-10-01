@@ -1,0 +1,49 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsbsy,amsfonts,graphicx,epsfig,float,hyperref,color}
+\usepackage{geometry}
+
+\begin{document}
+
+\section*{HW 3: Numerical solutions of ODE models}
+Due October 8, 2020 at noon.
+
+\begin{enumerate}
+	\item In Chapter 9 of Kot (``Elements of Mathematical Ecology''), a predator-prey model with type IV functional response is presented:
+	\begin{align*}
+		\frac{dN}{dT} &= rN\left(1-\frac{N}{K}\right) - \phi(N)P\\
+		\frac{dP}{dT} &= b\phi(N)P-mP
+	\end{align*}
+	where
+	\[
+	\phi(N) = \frac{cN}{\frac{N^2}{i}+N+a}
+	\]
+	and $N$ represents the prey, $P$ the predator. Substituting in $\phi(N)$ and nondimensionalizing yields the following equations
+	\begin{align*}
+		\frac{dx}{dt} &= x\left(1-\frac{x}{\gamma}\right) - \frac{xy}{\frac{x^2}{\alpha}+x+1}\\
+		\frac{dy}{dt} &= \frac{\beta\delta xy}{\frac{x^2}{\alpha}+x+1}
+	\end{align*}
+	with $x=\frac{N}{a}$, $y=\frac{c}{ra}P$, and $t=rT$.\\
+	Numerically solve this system of equations with the following parameters,\\
+	$\alpha=5.2$, $\beta=2.0$, $\gamma=4.1$, $\delta=2.5$, $x(0)=1.3$, $y(0)=1.6$,
+	and plot the solution over a chosen time period with $x$ on the x-axis and $y$ on the y-axis (one plot). You should see the solution spiral out to a steady oscillation (an orbit).
+	
+	\item In Chapter 10 of Kot, a double mass-action chemostat model is presented including rate equations for substrate, heterotroph, and holozoic predator
+	\begin{align*}
+		\frac{dS}{dT} &= D(S_i-S) - \frac{\mu_1}{Y_1}SH\\
+		\frac{dH}{dT} &= \mu_1SH - DH - \frac{\mu_2}{Y_2}HP\\
+		\frac{dP}{dT} &= \mu_2HP - DP.
+	\end{align*}
+	Nondimensionalizing yields the following equations:
+	\begin{align*}
+		\frac{dx}{dt} &= 1-x-Axy\\
+		\frac{dy}{dt} &= Axy-y-Byz\\
+		\frac{dz}{dt} &= Byz-z
+	\end{align*}
+	with $x=\frac{S}{S_i}$, $y=\frac{H}{Y_1S_i}$, $z=\frac{P}{Y_1Y_2S_i}$, $t=DT$.\\
+	Numerically solve this system of equations with the following parameters,\\
+	$A=4.0$, $B=8.0$. Choose your own initial conditions (strictly positive, not to big... say less than 5) and plot each of $x$, $y$, and $z$ against time in their own subplot (time on the x-axis, each variable on the y-axis) so that you can see damped oscillations.
+\end{enumerate}
+
+
+\end{document}
